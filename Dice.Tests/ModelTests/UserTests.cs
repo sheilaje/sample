@@ -1,0 +1,23 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Dice.Models;
+using System.Collections.Generic;
+using System;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Dice.Tests
+{
+  [TestClass]
+  public class UserTest : IDisposable
+  {
+
+    public void Dispose()
+    {
+
+    }
+
+    public UserTest()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=Dice_Test;";
+    }
+  }
+}

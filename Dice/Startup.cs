@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MySql.Data.MySqlClient;
-using Restaurant.Models;
+using Dice.Models;
 
-namespace Restaurant
+namespace Dice
 {
   public class Startup
   {
