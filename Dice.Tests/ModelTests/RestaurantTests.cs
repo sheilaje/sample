@@ -12,12 +12,12 @@ namespace Dice.Tests
 
     public void Dispose()
     {
-
+      // User.ClearAll();
     }
 
     public RestuarantTest()
     {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=Dice_Test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=Dice_Tests;";
     }
   }
 }

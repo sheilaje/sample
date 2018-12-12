@@ -7,22 +7,23 @@ using Microsoft.AspNetCore.Mvc;
 namespace Dice.Tests
 {
   [TestClass]
-  public class UserTest
-  // : IDispose
+  public class UserTest : IDisposable
   {
-    // public void Dispose()
-    // {
-    //
-    // }
-    //
-    // public UserTest()
-    // {
-    //   DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=Dice_Test;";
-    // }
+    public void Dispose()
+    {
+      User.ClearAll();
+    }
+
+    public UserTest()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=Dice_Tests;";
+    }
+
     [TestMethod]
     public void ItemConstructor_CreatesInstanceOfItem_Item()
     {
-      User newUser = new User("test", 1, 1);
+      User newUser = new User("Tavish", 1, 1);
+
       Assert.AreEqual(typeof(User), newUser.GetType());
     }
 
@@ -30,7 +31,7 @@ namespace Dice.Tests
     public void GetDescription_ReturnsDescription_String()
     {
       //Arrange
-      string name = "Walk the dog.";
+      string name = "Bob.";
       User newUser = new User(name, 1 , 1);
 
       //Act
@@ -39,5 +40,54 @@ namespace Dice.Tests
       //Assert
       Assert.AreEqual(name, result);
     }
+
+    [TestMethod]
+    public void GetAll_UsersEmptyAtFirst_List()
+    {
+      //Arrange, Act
+      int result = User.GetAll().Count;
+
+      //Assert
+      Assert.AreEqual(0, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllCategoryObjects_CategoryList()
+    {
+      //Arrange
+      string name01 = "Tavish";
+      string name02 = "Ryan";
+      User newUser1 = new User(name01, 1, 1);
+      newUser1.Save();
+      User newUser2 = new User(name02, 1, 1);
+      newUser2.Save();
+      List<User> newList = new List<User> { newUser1, newUser2 };
+
+      //Act
+      List<User> result = User.GetAll();
+
+      //Assert
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void Save_DatabaseAssignsIdToUser_Id()
+    {
+      //Arrange
+      User testUser = new User("Bob", 1, 1);
+      testUser.Save();
+      User testUser1 = new User("Bernard", 1, 2);
+      testUser1.Save();
+
+      //Act
+      User savedUser = User.GetAll()[1];
+
+      int result = savedUser.GetId();
+      int testId = testUser1.GetId();
+
+      //Assert
+      Assert.AreEqual(testId, result);
+    }
+
   }
 }
