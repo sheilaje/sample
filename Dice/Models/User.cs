@@ -11,7 +11,7 @@ namespace Dice.Models
     private int _id;
     private int _distance;
     private int _price;
-    private List<User> _favorites;
+    private List<Restaurant> _favorites;
 
     public User(string name, int distance, int price, int id = 0)
     {
@@ -19,7 +19,7 @@ namespace Dice.Models
       _id = id;
       _distance = distance;
       _price = price;
-      _favorites = new List<User>{};
+      _favorites = new List<Restaurant>{};
     }
 
     public string GetName()

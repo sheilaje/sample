@@ -89,5 +89,16 @@ namespace Dice.Tests
       Assert.AreEqual(testId, result);
     }
 
+    [TestMethod]
+    public void Equals_ReturnsTrueIfNamesAreTheSame_User()
+    {
+      //Arrange, Act
+      User firstUser = new User("Bob", 1, 1);
+      User secondUser = new User("Bob", 1, 1);
+
+      //Assert
+      Assert.AreEqual(firstUser, secondUser);
+    }
+
   }
 }
