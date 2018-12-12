@@ -19,4 +19,31 @@
 * Create view to display randomly selected restaurant from database, and information pertaining to restaurant drawn from database.
 
 
-testing changes.
+| Return Type        | Test Purpose           
+| ------------- |:-------------:|
+| View("Route")      | Check If ReturnsCorrectView |
+|      | Check If HasCorrectModelType      |   
+| View() | Check If ReturnsCorrectView      |
+| RedirectToAction("Route")      | Check If ReturnsCorrectView |
+|      | Check If ReturnsCorrectActionName      |  
+| View("Route", object)      | Check If ReturnsCorrectView |
+|      | HasCorrectViewName      |  
+|       | Check If HasCorrectModelType |
+
+
+
+| Method Name        | Test Purpose |  Method Type|
+|: ------------- :|:-------------:|:-------------:|
+|     Parent Constructor             |        Check If Creates Instance Of Parent      |       Parent Instance Constructor        |
+|  GetName()      | Check If Returns Parent Name |   Getter Method  |
+|  GetId()   | Check If Returns Parent Id     | Getter Method   |
+| Equals() | Check If Returns True If 2 Parent Objects with Identical Properties Are The Same     |   Maintenance Method    |
+| ClearAll()      | No Test |  Maintenance Method   |
+|   GetHashCode()   |  No Test     | Maintenance Method |
+| GetAll()     | Test 1: Check If Returned Parent's Instance List is Empty At First|Database Manipulation|
+|  GetAll()    | Test 2: Check If Returned List Contains All Parent's Instances      |  Database Manipulation  |
+|  Save()     | Check If It Saves Parent Instance To Database |Database Manipulation|
+|  Find()     |  Check If It Returns Parent Instance In Database   | Database Manipulation|
+|   GetClients()    | Check If It Retrieves All Child Instances Associated With Parent Instance|Database Manipulation|
+|  Edit()     | Check If It Updates Parent Instance In Database|Database Manipulation|
+|  Delete()  | Check If It Deletes Parent Instance From Database|Database Manipulation|
