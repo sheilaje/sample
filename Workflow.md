@@ -17,3 +17,6 @@
 * Create view to display user information. (link Favorite Restaurants, link splash page)
 * Write logic to randomly select Favorite Restaurant from database(when user clicks Roll, on splash page)
 * Create view to display randomly selected restaurant from database, and information pertaining to restaurant drawn from database.
+
+
+testing changes.
