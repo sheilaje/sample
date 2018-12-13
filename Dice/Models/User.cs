@@ -125,5 +125,75 @@ namespace Dice.Models
       return allUsers;
     }
 
+    public void Edit(string newName, int newDistance, int newPrice)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE User SET name = @newName WHERE id = @searchId; UPDATE User SET distance = @newDistance WHERE id = @searchId; UPDATE User SET price = @newPrice WHERE id = @searchId;";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@newName";
+      name.Value = newName;
+      cmd.Parameters.Add(name);
+      MySqlParameter distance = new MySqlParameter();
+      distance.ParameterName = "@newDistance";
+      distance.Value = newDistance;
+      cmd.Parameters.Add(distance);
+      MySqlParameter price = new MySqlParameter();
+      price.ParameterName = "@newPrice";
+      price.Value = newPrice;
+      cmd.Parameters.Add(price);
+      cmd.ExecuteNonQuery();
+      _name = newName;
+      _distance = newDistance;
+      _price = newPrice;
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public static User Find(int id)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM User WHERE id = (@searchId);";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = id;
+      cmd.Parameters.Add(searchId);
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      int userId = 0;
+      string userName = "";
+      int userPrice = 0;
+      int userDistance = 0;
+
+      while(rdr.Read())
+      {
+        userId = rdr.GetInt32(0);
+        userName = rdr.GetString(1);
+        userDistance = rdr.GetInt32(2);
+        userPrice = rdr.GetInt32(3);
+      }
+
+      User newUser = new User(userName, userDistance, userPrice, userId);
+
+      conn.Close();
+
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return newUser;
+    }
+
   }
 }

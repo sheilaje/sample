@@ -20,7 +20,7 @@ namespace Dice.Tests
     }
 
     [TestMethod]
-    public void ItemConstructor_CreatesInstanceOfItem_Item()
+    public void UserConstructor_CreatesInstanceOfUser_User()
     {
       User newUser = new User("Tavish", 1, 1);
 
@@ -99,6 +99,37 @@ namespace Dice.Tests
       //Assert
       Assert.AreEqual(firstUser, secondUser);
     }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectUserFromDatabase_User()
+    {
+      //Arrange
+      User testUser = new User("Bob", 0, 0);
+      testUser.Save();
+
+      //Act
+      User foundUser = User.Find(testUser.GetId());
+
+      //Assert
+      Assert.AreEqual(testUser, foundUser);
+    }
+
+    [TestMethod]
+    public void Edit_UpdatesUserInDatabase_String()
+    {
+      //Arrange
+      User testUser = new User("Bob", 1, 1);
+      testUser.Save();
+      string secondDescription = "Bob";
+
+      //Act
+      testUser.Edit(secondDescription, 3, 2);
+      string result = User.Find(testUser.GetId()).GetName();
+
+      //Assert
+      Assert.AreEqual(secondDescription, result);
+    }
+
 
   }
 }
