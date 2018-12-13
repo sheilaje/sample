@@ -1,3 +1,4 @@
+@using Dice.Models;
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,18 +11,26 @@
   <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
   <title>Splash Page</title>
 </head>
+<div class="jumbotron">
+<h2 >Restaurant Rallet</h2>
+</div>
+
+<div id="Wheel">
+  <img src="Images/Wheel.png" alt="">
+</div>
+
 
 <body>
   <h2>Roll</h2>
-
-  <form class="" action="?????" method="post">
+@* // goes to user show view// *@
+  <form class="" action="/User/@User.GetId()/Restaurant/@Restaurant.GetId()" method="post">
     <button type="submit" name="button">ROLL</button>
   </form>
   <br>
   <br>
   <h2>Profile</h2>
-
-  <form class="" action="?????" method="post">
+    @* will direct to the edit view user *@
+  <form class="" action="/User/@User.GetId()" method="post">
     <button type="submit" name="button">PROFILE</button>
   </form>
 </body>
