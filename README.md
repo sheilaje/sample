@@ -44,9 +44,10 @@ _Dice description._
 
 * _Clone repository to your desktop_
 * _Open in Atom, or text and source code editor of your choosing._
-* _CREATE Database tavish_okeefe._
-* _CREATE TABLE `tavish_okeefe`.`stylists` ( `id` INT NOT NULL AUTO_INCREMENT , `name`VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE =InnoDB;_
-* _CREATE TABLE `tavish_okeefe`.`clients` ( `id` INT NOT NULL AUTO_INCREMENT , `name`VARCHAR(255) NOT NULL , `stylist_id` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE =InnoDB;_
+* _CREATE Database Dice._
+* _CREATE TABLE `Dice`.`User` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `distance` INT NOT NULL , `price` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;_
+* _CREATE TABLE `Dice`.`Restaurants` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `longitude` INT NOT NULL , `latitude` INT NOT NULL , `menu` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;_
+* _CREATE TABLE `Dice`.`User_Restaurants` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `restaurant_id` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;_
 
 
 
